@@ -29,7 +29,17 @@
         <input id="apiKey" type="password" autocomplete="off" placeholder="sk-..." />
         <p class="field-note">Stored only in this browser via localStorage. The app has no backend.</p>
       </div>
-
+      
+<div class="field">
+  <label for="candidateProfile">Candidate profile <span class="optional">(optional)</span></label>
+  <textarea
+    id="candidateProfile"
+    rows="8"
+    placeholder="Paste a short summary of your background, target roles, location/work authorization, years of experience, and any important constraints..."
+  ></textarea>
+  <p class="field-note">Used only to personalize this evaluation. If left blank, candidate-specific criteria are treated as unknown.</p>
+</div>
+      
       <div class="field">
         <label for="jobPosting">Job posting</label>
         <textarea id="jobPosting" rows="18" placeholder="Paste the full job description here..."></textarea>
