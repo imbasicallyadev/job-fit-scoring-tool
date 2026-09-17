@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Personal job-fit scoring tool powered by GPT-5.6 Sol." />
+  <title>Job Fit Score</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">AI JOB SEARCH TOOL</p>
+        <h1>Job Fit Score</h1>
+        <p class="subhead">Paste a job posting. Get a structured fit score, verdict, gaps, and effort recommendation.</p>
+      </div>
+      <div class="model-pill">GPT-5.6 Sol · Medium · Web</div>
+    </header>
+
+    <section class="panel input-panel" aria-labelledby="input-title">
+      <h2 id="input-title">Score a role</h2>
+
+      <div class="field api-field">
+        <div class="label-row">
+          <label for="apiKey">OpenAI API key</label>
+          <button class="text-button" id="forgetKey" type="button">Forget saved key</button>
+        </div>
+        <input id="apiKey" type="password" autocomplete="off" placeholder="sk-..." />
+        <p class="field-note">Stored only in this browser via localStorage. The app has no backend.</p>
+      </div>
+
+      <div class="field">
+        <label for="jobPosting">Job posting</label>
+        <textarea id="jobPosting" rows="18" placeholder="Paste the full job description here..."></textarea>
+      </div>
+
+      <div class="action-row">
+        <button class="primary-button" id="scoreButton" type="button">Score job</button>
+        <span id="status" class="status" role="status" aria-live="polite"></span>
+      </div>
+      <p class="field-note">V1.1.2 uses the pasted JD plus GPT-5.6 Sol with medium reasoning and performs a live company-research pass on every evaluation before scoring current company-level factors.</p>
+    </section>
+
+    <section class="panel history-panel" aria-labelledby="history-title">
+      <div class="section-heading-row">
+        <div>
+          <h2 id="history-title">Evaluation history</h2>
+          <p class="field-note history-note">Saved only in this browser. Clearing browser/site data will remove it.</p>
+        </div>
+        <button class="text-button" id="clearHistory" type="button">Clear history</button>
+      </div>
+      <p id="historyEmpty" class="history-empty">No saved evaluations yet.</p>
+      <div id="historyList" class="history-list" aria-live="polite"></div>
+    </section>
+
+    <section id="results" class="results hidden" aria-live="polite">
+      <div class="summary-grid">
+        <article class="summary-card">
+          <span class="summary-label">Verdict</span>
+          <strong id="verdictValue" class="summary-value">—</strong>
+        </article>
+        <article class="summary-card">
+          <span class="summary-label">Score</span>
+          <strong id="scoreValue" class="summary-value">—</strong>
+        </article>
+        <article class="summary-card">
+          <span class="summary-label">Company tracker</span>
+          <strong id="trackerValue" class="summary-value">—</strong>
+        </article>
+      </div>
+
+      <section class="panel result-panel">
+        <div class="section-heading-row">
+          <h2>Hard-filter check</h2>
+          <span id="hardFilterBadge" class="badge">—</span>
+        </div>
+        <ul id="hardFilterReasons" class="plain-list"></ul>
+      </section>
+
+      <section class="panel result-panel">
+        <h2>Company assessment</h2>
+        <p id="companyAssessment" class="result-copy"></p>
+      </section>
+
+      <section class="panel result-panel">
+        <h2>Research sources</h2>
+        <ul id="researchSources" class="plain-list"></ul>
+      </section>
+
+      <section class="panel result-panel">
+        <h2>Score breakdown</h2>
+        <div class="score-table-wrap">
+          <table class="score-table">
+            <thead>
+              <tr>
+                <th scope="col">Dimension</th>
+                <th scope="col">Score</th>
+                <th scope="col">Reasoning</th>
+              </tr>
+            </thead>
+            <tbody id="scoreRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="two-column">
+        <section class="panel result-panel">
+          <h2>Biggest gaps</h2>
+          <ul id="gapsList" class="plain-list"></ul>
+        </section>
+
+        <section class="panel result-panel">
+          <h2>What to emphasize</h2>
+          <ul id="emphasizeList" class="plain-list"></ul>
+        </section>
+      </div>
+
+      <div class="two-column">
+        <section class="panel result-panel">
+          <h2>Recommended effort</h2>
+          <p><strong id="effortLevel"></strong></p>
+          <p id="effortReasoning" class="result-copy"></p>
+        </section>
+
+        <section class="panel result-panel">
+          <h2>Company tracker</h2>
+          <p><strong id="trackerVerdict"></strong></p>
+          <p id="trackerReasoning" class="result-copy"></p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
