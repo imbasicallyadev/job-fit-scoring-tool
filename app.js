@@ -116,7 +116,7 @@ const SCORE_SCHEMA = {
             "reasoning"
           ]
         },
-        "founding_team_geography": {
+        "founding_team": {
           "type": "object",
           "additionalProperties": false,
           "properties": {
@@ -230,7 +230,7 @@ const SCORE_SCHEMA = {
         "function_fit",
         "ai_relevance",
         "pmf",
-        "founding_team_geography",
+        "founding_team",
         "funding_status",
         "seniority_fit",
         "company_stage",
@@ -325,7 +325,7 @@ const DIMENSION_LABELS = {
   "function_fit": "Function fit",
   "ai_relevance": "AI relevance / AI value-chain exposure",
   "pmf": "PMF / underlying demand",
-  "founding_team_geography": "Founding Team",
+  "founding_team": "Founding Team",
   "funding_status": "Funding status / financial support",
   "seniority_fit": "Seniority fit",
   "company_stage": "Company stage / operating environment fit",
@@ -334,6 +334,7 @@ const DIMENSION_LABELS = {
 };
 
 const apiKeyInput = document.getElementById("apiKey");
+const candidateProfileInput = document.getElementById("candidateProfile");
 const jobPostingInput = document.getElementById("jobPosting");
 const scoreButton = document.getElementById("scoreButton");
 const forgetKeyButton = document.getElementById("forgetKey");
@@ -364,7 +365,8 @@ clearHistoryButton.addEventListener("click", () => {
 scoreButton.addEventListener("click", scoreJob);
 
 async function scoreJob() {
-  const apiKey = apiKeyInput.value.trim();
+  const apiKey = .value.trim();
+  const candidateProfile = candidateProfileInput.value.trim();
   const jobPosting = jobPostingInput.value.trim();
 
   if (!apiKey) {
@@ -396,9 +398,17 @@ async function scoreJob() {
           effort: REASONING_EFFORT
         },
         instructions: SYSTEM_PROMPT,
-        input: `Score this job posting using the system criteria. Treat only the text below as the job posting. For internal client-side history metadata, also identify the company name and job title from the posting and return them in the structured job_metadata fields. If either is unclear, use "Unknown". This metadata must not affect scoring.
+        input: input: `Evaluate this job opportunity using the system criteria.
 
-${jobPosting}`,
+Candidate profile:
+${candidateProfile || "Not provided. Treat candidate-specific criteria as unknown or neutral where the available information is insufficient."}
+
+Job posting:
+${jobPosting}
+
+Treat the Candidate profile only as information about the candidate. Treat the Job posting only as information about the opportunity.
+
+For internal client-side history metadata, identify the company name and job title from the job posting and return them in the structured job_metadata fields. If either is unclear, use "Unknown". This metadata must not affect scoring.`,
         tools: [
           { type: "web_search" }
         ],
