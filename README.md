@@ -20,7 +20,7 @@ V1 is a browser-based single-page app connected to the OpenAI Responses API.
 
 ## Development process
 
-### Wednesday 1: Scoring logic + calibration (校准)
+### Wednesday 1: Scoring logic + calibration 
 
 I started by building and testing the scoring rubric before turning it into an interface.
 
