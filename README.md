@@ -1,6 +1,6 @@
 # Job Fit Scoring Tool
 
-A personal AI tool for deciding **how much job-search effort an opportunity deserves**, rather than trying to predict whether the user will get hired.
+A personal AI tool for deciding **whether to apply to an opportunity and, if so, how much effort to put into the application**.
 
 ## V1 workflow
 
