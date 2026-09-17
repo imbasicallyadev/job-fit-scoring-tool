@@ -108,7 +108,7 @@ Application submission would remain manual.
 
 Turn the scoring engine into a configurable product where other job seekers can define their own role, geography, seniority, industry, and qualification criteria.
 
-The longer-term use case is especially relevant for people transitioning into adjacent fields or searching across regions where standard job-board filtering is weak.
+The longer-term goal is to make the repetitive parts of job searching largely automatic: set your criteria once, then let the product evaluate new roles, filter out low-fit opportunities, surface the strongest opportunities, and prepare application materials without having to manually read every JD or prompt an LLM through each step.
 
 ## Status
 
