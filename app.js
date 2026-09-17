@@ -365,7 +365,7 @@ clearHistoryButton.addEventListener("click", () => {
 scoreButton.addEventListener("click", scoreJob);
 
 async function scoreJob() {
-  const apiKey = .value.trim();
+  const apiKey = apiKeyInput.value.trim();
   const candidateProfile = candidateProfileInput.value.trim();
   const jobPosting = jobPostingInput.value.trim();
 
@@ -398,7 +398,7 @@ async function scoreJob() {
           effort: REASONING_EFFORT
         },
         instructions: SYSTEM_PROMPT,
-        input: input: `Evaluate this job opportunity using the system criteria.
+        input: `Evaluate this job opportunity using the system criteria.
 
 Candidate profile:
 ${candidateProfile || "Not provided. Treat candidate-specific criteria as unknown or neutral where the available information is insufficient."}
