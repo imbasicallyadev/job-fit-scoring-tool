@@ -24,7 +24,7 @@ V1 is a browser-based single-page app connected to the OpenAI Responses API.
 
 I started by building and testing the scoring rubric before turning it into an interface.
 
-I used roles I had already evaluated manually as calibration (校准) cases. When the model disagreed with my expected verdict, I inspected the dimension-level scores and reasoning, then adjusted the rubric only when the underlying logic did not reflect the criteria I actually use to evaluate opportunities.
+I used roles I had already evaluated manually as calibration cases. When the model disagreed with my expected verdict, I inspected the dimension-level scores and reasoning, then adjusted the rubric only when the underlying logic did not reflect the criteria I actually use to evaluate opportunities.
 
 This led to changes such as:
 
@@ -43,7 +43,7 @@ I turned the scoring system into a working web application and added:
 - visible research sources
 - structured scoring output
 - browser-local evaluation history
-- additional scoring calibration (校准) from real test cases
+- additional scoring calibration from real test cases
 
 ## 10 scoring dimensions
 
